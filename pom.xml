@@ -66,6 +66,13 @@
 		<url>http://jenkins.imagej.net/job/SciJava-plugins-platforms/</url>
 	</ciManagement>
 
+	<repositories>
+		<repository>
+			<id>imagej.public</id>
+			<url>http://maven.imagej.net/content/groups/public</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<!-- SciJava dependencies -->
 		<dependency>
