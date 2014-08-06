@@ -38,7 +38,6 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 
-import org.scijava.command.Command;
 import org.scijava.command.CommandInfo;
 import org.scijava.command.CommandService;
 import org.scijava.display.event.window.WinActivatedEvent;
@@ -48,7 +47,6 @@ import org.scijava.event.EventSubscriber;
 import org.scijava.module.ModuleInfo;
 import org.scijava.module.event.ModulesUpdatedEvent;
 import org.scijava.platform.AbstractPlatform;
-import org.scijava.platform.AppEventService;
 import org.scijava.platform.Platform;
 import org.scijava.platform.PlatformService;
 import org.scijava.plugin.Plugin;
@@ -150,20 +148,16 @@ public class MacOSXPlatform extends AbstractPlatform {
 		final PlatformService platformService = getPlatformService();
 		final EventService eventService = platformService.getEventService();
 		final CommandService commandService = platformService.getCommandService();
-		final AppEventService appEventService =
-			platformService.getAppEventService();
 
-		// get the list of commands being handled at the application level
-		final List<Class<? extends Command>> commands =
-			appEventService.getCommands();
-
-		// remove said commands from the main menu bar
-		// (the Mac application menu will trigger them instead)
+		// NB: Search for commands being handled at the application level.
+		// We remove such commands from the main menu bar;
+		// the Mac application menu will trigger them instead.
 		final ArrayList<ModuleInfo> infos = new ArrayList<ModuleInfo>();
-		for (final Class<? extends Command> command : commands) {
-			final CommandInfo info = commandService.getCommand(command);
-			info.setMenuPath(null);
-			infos.add(info);
+		for (final CommandInfo info : commandService.getCommands()) {
+			if (info.is("app-command")) {
+				info.setMenuPath(null);
+				infos.add(info);
+			}
 		}
 		eventService.publish(new ModulesUpdatedEvent(infos));
 	}
