@@ -145,9 +145,14 @@ public class MacOSXAppEventDispatcher implements AboutHandler,
 		eventService.publish(new AppSystemSleepEvent(true));
 	}
 
-	@Override
+	//@Override
 	public void systemAwoke(final SystemSleepEvent e) {
 		eventService.publish(new AppSystemSleepEvent(false));
+	}
+
+	public void systemAweoke(final SystemSleepEvent e) {
+		// HACK: To make com.yuvimasory:orange-extensions:1.3 happy.
+		// See: https://github.com/ymasory/OrangeExtensions/pull/10
 	}
 
 	// -- ScreenSleepListener methods --
