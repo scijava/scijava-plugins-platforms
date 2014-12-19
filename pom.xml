@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>scijava-plugins-platforms</artifactId>
-	<version>0.1.3-SNAPSHOT</version>
+	<version>0.1.3</version>
 
 	<name>SciJava Plugins: Platforms</name>
 	<description>Core platform plugins for SciJava applications.</description>
@@ -52,7 +52,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/scijava/scijava-plugins-platforms</connection>
 		<developerConnection>scm:git:git@github.com:scijava/scijava-plugins-platforms</developerConnection>
-		<tag>HEAD</tag>
+		<tag>scijava-plugins-platforms-0.1.3</tag>
 		<url>https://github.com/scijava/scijava-plugins-platforms</url>
 	</scm>
 
