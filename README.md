@@ -1,3 +1,5 @@
+![](http://jenkins.imagej.net/job/SciJava-plugins-platforms/lastBuild/badge/icon)
+
 SciJava Plugins: Platforms
 --------------------------
 
