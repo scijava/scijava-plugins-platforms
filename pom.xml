@@ -15,7 +15,6 @@
 	<name>SciJava Plugins: Platforms</name>
 	<description>Core platform plugins for SciJava applications.</description>
 	<inceptionYear>2010</inceptionYear>
-
 	<licenses>
 		<license>
 			<name>Simplified BSD License</name>
@@ -62,12 +61,10 @@
 		<tag>HEAD</tag>
 		<url>https://github.com/scijava/scijava-plugins-platforms</url>
 	</scm>
-
 	<issueManagement>
 		<system>GitHub Issues</system>
 		<url>http://github.com/scijava/scijava-plugins-platforms/issues</url>
 	</issueManagement>
-
 	<ciManagement>
 		<system>Jenkins</system>
 		<url>http://jenkins.imagej.net/job/SciJava-plugins-platforms/</url>
@@ -119,5 +116,4 @@ Wisconsin-Madison.</organizationName>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
