@@ -28,7 +28,7 @@
  * #L%
  */
 
-package org.scijava.plugins.platforms.macosx;
+package org.scijava.plugins.platforms.osx;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,17 +52,17 @@ import org.scijava.platform.PlatformService;
 import org.scijava.plugin.Plugin;
 
 /**
- * A platform implementation for handling Mac OS X platform issues:
+ * A platform implementation for handling Apple OS X platform issues:
  * <ul>
  * <li>Application events are rebroadcast as ImageJ events.</li>
- * <li>Mac OS X screen menu bar is enabled.</li>
+ * <li>OS X screen menu bar is enabled.</li>
  * <li>Special screen menu bar menu items are handled.</li>
  * </ul>
  * 
  * @author Curtis Rueden
  */
-@Plugin(type = Platform.class, name = "Mac OS X")
-public class MacOSXPlatform extends AbstractPlatform {
+@Plugin(type = Platform.class, name = "OS X")
+public class OSXPlatform extends AbstractPlatform {
 
 	/** Debugging flag to allow easy toggling of Mac screen menu bar behavior. */
 	private static final boolean SCREEN_MENU = true;
@@ -78,23 +78,23 @@ public class MacOSXPlatform extends AbstractPlatform {
 
 	@Override
 	public String osName() {
-		return "Mac OS X";
+		return "OS X";
 	}
 
 	@Override
 	public void configure(final PlatformService service) {
 		super.configure(service);
 
-		// use Mac OS X screen menu bar
+		// use OS X screen menu bar
 		if (SCREEN_MENU) System.setProperty("apple.laf.useScreenMenuBar", "true");
 
 		// remove app commands from menu structure
 		if (SCREEN_MENU) removeAppCommandsFromMenu();
 
-		// translate Mac OS X application events into ImageJ events
+		// translate OS X application events into ImageJ events
 		final EventService eventService = getPlatformService().getEventService();
 		try {
-			appEventDispatcher = new MacOSXAppEventDispatcher(eventService);
+			appEventDispatcher = new OSXAppEventDispatcher(eventService);
 		}
 		catch (final NoClassDefFoundError e) {
 			// the interfaces implemented by MacOSXAppEventDispatcher might not be

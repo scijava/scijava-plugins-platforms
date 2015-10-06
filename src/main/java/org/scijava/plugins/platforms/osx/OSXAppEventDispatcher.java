@@ -28,7 +28,7 @@
  * #L%
  */
 
-package org.scijava.plugins.platforms.macosx;
+package org.scijava.plugins.platforms.osx;
 
 import com.apple.eawt.AboutHandler;
 import com.apple.eawt.AppEvent.AboutEvent;
@@ -69,11 +69,11 @@ import org.scijava.platform.event.AppUserSessionEvent;
 import org.scijava.platform.event.AppVisibleEvent;
 
 /**
- * Rebroadcasts Mac OS X application events as ImageJ events.
+ * Rebroadcasts OS X application events as ImageJ events.
  * 
  * @author Curtis Rueden
  */
-public class MacOSXAppEventDispatcher implements AboutHandler,
+public class OSXAppEventDispatcher implements AboutHandler,
 	AppForegroundListener, AppHiddenListener, AppReOpenedListener,
 	PreferencesHandler, PrintFilesHandler, QuitHandler, ScreenSleepListener,
 	SystemSleepListener, UserSessionListener, OpenFilesHandler
@@ -81,11 +81,11 @@ public class MacOSXAppEventDispatcher implements AboutHandler,
 
 	private final EventService eventService;
 
-	public MacOSXAppEventDispatcher(final EventService eventService) {
+	public OSXAppEventDispatcher(final EventService eventService) {
 		this(Application.getApplication(), eventService);
 	}
 
-	public MacOSXAppEventDispatcher(final Application app,
+	public OSXAppEventDispatcher(final Application app,
 		final EventService eventService)
 	{
 		this.eventService = eventService;
