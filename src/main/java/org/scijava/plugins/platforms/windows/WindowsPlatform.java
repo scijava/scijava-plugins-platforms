@@ -55,11 +55,18 @@ public class WindowsPlatform extends AbstractPlatform {
 	@Override
 	public void open(final URL url) throws IOException {
 		final String cmd;
+		final String arg;
+		// NB: the cmd and arg separate is necessary for Windows OS
+		// to open the default browser correctly.
 		if (System.getProperty("os.name").startsWith("Windows 2000")) {
-			cmd = "rundll32 shell32.dll,ShellExec_RunDLL";
+			cmd = "rundll32";
+			arg = "shell32.dll,ShellExec_RunDLL";
 		}
-		else cmd = "rundll32 url.dll,FileProtocolHandler";
-		if (getPlatformService().exec(cmd, url.toString()) != 0) {
+		else {
+			cmd = "rundll32";
+			arg = "url.dll,FileProtocolHandler";
+		}
+		if (getPlatformService().exec(cmd, arg, url.toString()) != 0) {
 			throw new IOException("Could not open " + url);
 		}
 	}
