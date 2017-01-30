@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.scijava</groupId>
 		<artifactId>pom-scijava</artifactId>
-		<version>9.0.0</version>
+		<version>12.0.0</version>
 		<relativePath />
 	</parent>
 
@@ -14,7 +14,12 @@
 
 	<name>SciJava Plugins: Platforms</name>
 	<description>Core platform plugins for SciJava applications.</description>
+	<url>https://github.com/scijava/scijava-plugins-platforms</url>
 	<inceptionYear>2010</inceptionYear>
+	<organization>
+		<name>SciJava</name>
+		<url>http://www.scijava.org/</url>
+	</organization>
 	<licenses>
 		<license>
 			<name>Simplified BSD License</name>
@@ -51,6 +56,16 @@
 		</contributor>
 	</contributors>
 
+	<mailingLists>
+		<mailingList>
+			<name>SciJava</name>
+			<subscribe>https://groups.google.com/group/scijava</subscribe>
+			<unsubscribe>https://groups.google.com/group/scijava</unsubscribe>
+			<post>scijava@googlegroups.com</post>
+			<archive>https://groups.google.com/group/scijava</archive>
+		</mailingList>
+	</mailingLists>
+
 	<scm>
 		<connection>scm:git:git://github.com/scijava/scijava-plugins-platforms</connection>
 		<developerConnection>scm:git:git@github.com:scijava/scijava-plugins-platforms</developerConnection>
@@ -65,6 +80,13 @@
 		<system>Jenkins</system>
 		<url>http://jenkins.imagej.net/job/SciJava-plugins-platforms/</url>
 	</ciManagement>
+
+	<properties>
+		<package-name>org.scijava.plugins.platforms</package-name>
+		<license.licenseName>bsd_2</license.licenseName>
+		<license.copyrightOwners>Board of Regents of the University of
+Wisconsin-Madison.</license.copyrightOwners>
+	</properties>
 
 	<repositories>
 		<repository>
@@ -88,28 +110,4 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<packageName>org.scijava.plugins.platforms</packageName>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<configuration>
-					<licenseName>bsd_2</licenseName>
-					<organizationName>Board of Regents of the University of
-Wisconsin-Madison.</organizationName>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
