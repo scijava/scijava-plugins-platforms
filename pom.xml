@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>scijava-plugins-platforms</artifactId>
-	<version>0.2.1-SNAPSHOT</version>
+	<version>0.2.2-SNAPSHOT</version>
 
 	<name>SciJava Plugins: Platforms</name>
 	<description>Core platform plugins for SciJava applications.</description>
