@@ -28,7 +28,7 @@
  * #L%
  */
 
-package org.scijava.plugins.platforms.osx;
+package org.scijava.plugins.platforms.macos;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,17 +52,17 @@ import org.scijava.platform.PlatformService;
 import org.scijava.plugin.Plugin;
 
 /**
- * A platform implementation for handling Apple OS X platform issues:
+ * A platform implementation for handling Apple macOS platform issues:
  * <ul>
  * <li>Application events are rebroadcast as ImageJ events.</li>
- * <li>OS X screen menu bar is enabled.</li>
+ * <li>macOS screen menu bar is enabled.</li>
  * <li>Special screen menu bar menu items are handled.</li>
  * </ul>
  * 
  * @author Curtis Rueden
  */
-@Plugin(type = Platform.class, name = "OS X")
-public class OSXPlatform extends AbstractPlatform {
+@Plugin(type = Platform.class, name = "macOS")
+public class MacOSPlatform extends AbstractPlatform {
 
 	/** Debugging flag to allow easy toggling of Mac screen menu bar behavior. */
 	private static final boolean SCREEN_MENU = true;
@@ -78,29 +78,29 @@ public class OSXPlatform extends AbstractPlatform {
 
 	@Override
 	public String osName() {
-		return "OS X";
+		return "macOS";
 	}
 
 	@Override
 	public void configure(final PlatformService service) {
 		super.configure(service);
 
-		// use OS X screen menu bar
+		// use macOS screen menu bar
 		if (SCREEN_MENU) System.setProperty("apple.laf.useScreenMenuBar", "true");
 
 		// remove app commands from menu structure
 		if (SCREEN_MENU) removeAppCommandsFromMenu();
 
-		// translate OS X application events into ImageJ events
+		// translate macOS application events into ImageJ events
 		final EventService eventService = getPlatformService().getEventService();
 		try {
-			appEventDispatcher = new OSXAppEventDispatcher(eventService);
+			appEventDispatcher = new MacOSAppEventDispatcher(eventService);
 		}
 		catch (final NoClassDefFoundError e) {
-			// the interfaces implemented by MacOSXAppEventDispatcher might not be
+			// the interfaces implemented by MacOSAppEventDispatcher might not be
 			// available:
 			// - on MacOSX Tiger without recent Java Updates
-			// - on earlier MacOSX versions
+			// - on earlier OS versions
 		}
 
 		// subscribe to relevant window-related events
