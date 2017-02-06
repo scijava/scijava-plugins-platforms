@@ -92,7 +92,7 @@ public class MacOSPlatform extends AbstractPlatform {
 		if (SCREEN_MENU) removeAppCommandsFromMenu();
 
 		// translate macOS application events into ImageJ events
-		final EventService eventService = getPlatformService().getEventService();
+		final EventService eventService = getPlatformService().eventService();
 		try {
 			appEventDispatcher = new MacOSAppEventDispatcher(eventService);
 		}
