@@ -78,7 +78,9 @@ public class MacOSPlatform extends AbstractPlatform {
 
 	@Override
 	public String osName() {
-		return "macOS";
+		// NB: The value of the os.name system property for activation purposes;
+		// see org.scijava.platform.Platform#isTarget().
+		return "Mac OS X";
 	}
 
 	@Override
