@@ -128,7 +128,7 @@ public class MacOSPlatform extends AbstractPlatform {
 
 	@Override
 	public void dispose() {
-		getPlatformService().getEventService().unsubscribe(subscribers);
+		getPlatformService().eventService().unsubscribe(subscribers);
 	}
 
 	// -- Event handlers --
@@ -148,13 +148,13 @@ public class MacOSPlatform extends AbstractPlatform {
 
 	private void removeAppCommandsFromMenu() {
 		final PlatformService platformService = getPlatformService();
-		final EventService eventService = platformService.getEventService();
-		final CommandService commandService = platformService.getCommandService();
+		final EventService eventService = platformService.eventService();
+		final CommandService commandService = platformService.commandService();
 
 		// NB: Search for commands being handled at the application level.
 		// We remove such commands from the main menu bar;
 		// the Mac application menu will trigger them instead.
-		final ArrayList<ModuleInfo> infos = new ArrayList<ModuleInfo>();
+		final ArrayList<ModuleInfo> infos = new ArrayList<>();
 		for (final CommandInfo info : commandService.getCommands()) {
 			if (info.is("app-command")) {
 				info.setMenuPath(null);
